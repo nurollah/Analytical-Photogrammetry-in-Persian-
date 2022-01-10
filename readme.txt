@@ -18,7 +18,7 @@ These codes are allowed to use only for research purposes, and we don't provide 
 
 
 ## Running environment
-- Matlab 2014 and its Computer Vision Toolbox 
+- Matlab 
 
 
 ## How to Run?
