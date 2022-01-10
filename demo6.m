@@ -76,3 +76,63 @@ xy1=round(xy1,4);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 [Exterior]=Space_Resection(XYZ, xy1, xo , yo , f );
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% example 4: resection - intersection together
+clc;
+clear;
+% interior orientation
+xo = 0.008; yo = -0.012; f = 152.14;
+% exterior orientation parameters
+% first image
+omega1 = 1.2; phi1 = 2.3; kappa1 = 5.1;
+X01 = 1114; Y01 = 862; Z01 = 1500;
+% second image
+omega2 = 2.5; phi2 = 2.2; kappa2 = 5.7;
+X02 = 1966; Y02 = 904; Z02 = 1490;
+% coordinates of an optional ground point 
+XYZ = [2720, 170, 109;...
+       2610, 1900, 189;...
+       220, 1700, 155;...
+       250, 200, 110];
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% process
+xy1 = zeros(4,2);
+xy2 = zeros(4,2);
+[xy1(1,:)] = BackProjection(XYZ(1,1), XYZ(1,2), XYZ(1,3), omega1, phi1, kappa1, X01, Y01, Z01, xo, yo, f);
+[xy1(2,:)] = BackProjection(XYZ(2,1), XYZ(2,2), XYZ(2,3), omega1, phi1, kappa1, X01, Y01, Z01, xo, yo, f);
+[xy1(3,:)] = BackProjection(XYZ(3,1), XYZ(3,2), XYZ(3,3), omega1, phi1, kappa1, X01, Y01, Z01, xo, yo, f);
+[xy1(4,:)] = BackProjection(XYZ(4,1), XYZ(4,2), XYZ(4,3), omega1, phi1, kappa1, X01, Y01, Z01, xo, yo, f);
+
+[xy2(1,:)] = BackProjection(XYZ(1,1), XYZ(1,2), XYZ(1,3), omega2, phi2, kappa2, X02, Y02, Z02, xo, yo, f);
+[xy2(2,:)] = BackProjection(XYZ(2,1), XYZ(2,2), XYZ(2,3), omega2, phi2, kappa2, X02, Y02, Z02, xo, yo, f);
+[xy2(3,:)] = BackProjection(XYZ(3,1), XYZ(3,2), XYZ(3,3), omega2, phi2, kappa2, X02, Y02, Z02, xo, yo, f);
+[xy2(4,:)] = BackProjection(XYZ(4,1), XYZ(4,2), XYZ(4,3), omega2, phi2, kappa2, X02, Y02, Z02, xo, yo, f);
+
+xy1xy2XYZ_Control = [xy1, xy2, XYZ];
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% tie points
+XYZ = [1420, 980, 120;...
+       1790, 1700, 155;...
+       1960, 270, 90;...
+       1095, 205, 166;...
+       930, 1650, 170];
+xy1 = zeros(5,2);
+xy2 = zeros(5,2);
+[xy1(1,:)] = BackProjection(XYZ(1,1), XYZ(1,2), XYZ(1,3), omega1, phi1, kappa1, X01, Y01, Z01, xo, yo, f);
+[xy1(2,:)] = BackProjection(XYZ(2,1), XYZ(2,2), XYZ(2,3), omega1, phi1, kappa1, X01, Y01, Z01, xo, yo, f);
+[xy1(3,:)] = BackProjection(XYZ(3,1), XYZ(3,2), XYZ(3,3), omega1, phi1, kappa1, X01, Y01, Z01, xo, yo, f);
+[xy1(4,:)] = BackProjection(XYZ(4,1), XYZ(4,2), XYZ(4,3), omega1, phi1, kappa1, X01, Y01, Z01, xo, yo, f);
+[xy1(5,:)] = BackProjection(XYZ(5,1), XYZ(5,2), XYZ(5,3), omega1, phi1, kappa1, X01, Y01, Z01, xo, yo, f);
+
+[xy2(1,:)] = BackProjection(XYZ(1,1), XYZ(1,2), XYZ(1,3), omega2, phi2, kappa2, X02, Y02, Z02, xo, yo, f);
+[xy2(2,:)] = BackProjection(XYZ(2,1), XYZ(2,2), XYZ(2,3), omega2, phi2, kappa2, X02, Y02, Z02, xo, yo, f);
+[xy2(3,:)] = BackProjection(XYZ(3,1), XYZ(3,2), XYZ(3,3), omega2, phi2, kappa2, X02, Y02, Z02, xo, yo, f);
+[xy2(4,:)] = BackProjection(XYZ(4,1), XYZ(4,2), XYZ(4,3), omega2, phi2, kappa2, X02, Y02, Z02, xo, yo, f);
+[xy2(5,:)] = BackProjection(XYZ(5,1), XYZ(5,2), XYZ(5,3), omega2, phi2, kappa2, X02, Y02, Z02, xo, yo, f);
+
+xy1xy2XYZ_Tie = [xy1, xy2, XYZ];
+
+[outputs] = Example4_demo6(xy1xy2XYZ_Control, xy1xy2XYZ_Tie, xo, yo, f);
+
+
