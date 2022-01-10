@@ -1,13 +1,23 @@
 % Bismillah
 function [Exterior]=Space_Resection(XYZ, xy, xo , yo , f )
+% about function: this function is used to do compute exterior orientation from
+% ground control points based on space resection by co-linear equation.
+% this matlab code implemented by Nurollah Tatar, PhD  in photogrammetry at
+% University of Theran, Tehran, Iran. Email: n.tatar@ut.ac.ir
+% inputs:
+% xy= image coordinates. this points must be more than 3 pts
+% XYZ= [X,Y,Z] the coordinates of ground control points (meters). this points must be more than 3 pts
+% xo,yo : coordinate of principle point 
+%  f is focal length
+%
 m =size(XYZ,1);
 % compute initial values for exterior orientation
 
 A = zeros(2*m,4);
-A(1:2:end,1) = xy(:,1)/1000;
-A(1:2:end,2) = xy(:,2)/1000;
-A(2:2:end,1) = xy(:,2)/1000;
-A(2:2:end,2) = -xy(:,1)/1000;
+A(1:2:end,1) = xy(:,1)/1000;% milimeters to meters
+A(1:2:end,2) = xy(:,2)/1000;% milimeters to meters
+A(2:2:end,1) = xy(:,2)/1000;% milimeters to meters
+A(2:2:end,2) = -xy(:,1)/1000;% milimeters to meters
 A(1:2:end,3) = 1;
 A(2:2:end,4) = 1;
 %

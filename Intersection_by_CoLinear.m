@@ -1,5 +1,14 @@
 % Bismillah
 function [XYZ]=Intersection_by_CoLinear(xy1, xy2, exterior, interior)
+% about function: this function is used to do compute 3D coordinates from
+% corresponing points based on Intersection by co-linear equation.
+% this matlab code implemented by Nurollah Tatar, PhD  in photogrammetry at
+% University of Theran, Tehran, Iran. Email: n.tatar@ut.ac.ir
+% inputs:
+% xy1= [x1,y1] the coordinate in image 1 (left image). this points must be more than 5 pts
+% xy2= [x2,y2] the coordinate in image 2 (rigth image). this points must be more than 5 pts
+% exterior: exterior orientations
+% interior: interior orientations
 %
 xo = interior(1,1);
 yo = interior(1,2);
