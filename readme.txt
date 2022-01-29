@@ -1,7 +1,7 @@
 % Bismillah
 Dezful, Iran, 01/01/2022
 
-These are matlab codes for analytical photogrammetry courses which I teached in Jundy Shapour University of Technology
+These are pdf files for analytical photogrammetry courses which I taught in Jundy Shapour University of Technology
 
 ```
 @Booklets{Tatar2022,
@@ -13,19 +13,3 @@ These are matlab codes for analytical photogrammetry courses which I teached in 
 ```
 
 
-These codes are allowed to use only for research purposes, and we don't provide any warranty. 
-```
-
-
-## Running environment
-- Matlab 
-
-
-## How to Run?
-1. run demo1.m
-2. run demo2.m
-3. run demo3.m
-4. run demo4.m
-5. run demo5.m
-6. run demo6.m
-7. run demo7.m
